@@ -16,10 +16,13 @@ import os
 import json
 import base64
 import datetime
+import random
 
 import amazon_link
 import niches
+import products
 import pin_spec
+import image_gen
 
 QUEUE_DIR = os.path.join(os.path.dirname(__file__), "queue")
 QUEUE_FILE = os.path.join(QUEUE_DIR, "staged_pins.json")
@@ -87,32 +90,67 @@ class Analyst:
 
 
 # ---------- foreman ----------
+HERE = os.path.dirname(os.path.abspath(__file__))
+
 class Foreman:
     def __init__(self, board_id=None):
         self.board_id = board_id
 
-    def run(self):
+    def build_campaign(self, plan, perf=None):
+        """plan: list of {date,niche,board,format,slug} from monthly_planner.
+        Returns Sheet-ready pin dicts using the expanded product pool + per-combo image."""
+        perf = perf or {}
+        pins = []
+        pool_idx = {}
+        for row in plan:
+            niche, fmt, slug = row["niche"], row["format"], row["slug"]
+            pool = products.SEED_PRODUCTS.get(niche, [])
+            if not pool:
+                continue
+            i = pool_idx.get(niche, 0) % len(pool)
+            pool_idx[niche] = i + 1
+            asin, name = pool[i]
+            tmpl = next(c for c in niches.CONTENT_FORMATS if c["format"] == fmt)
+            link = amazon_link.build_affiliate_link(asin)
+            ctx = dict(n=5, price=25, problem="clutter", season="Holiday",
+                       seasonlower="holiday", product=name, niche=niche.replace("_", " "))
+            title = tmpl["title_tmpl"].format(**ctx)
+            description = tmpl["desc_tmpl"].format(**ctx)
+            img = image_gen.image_path(niche, fmt)
+            slug = image_gen.slug_for(niche, fmt)
+            # Use rendered URL if present in manifest, else the demo placeholder host.
+            m = json.load(open(os.path.join(HERE, "manifest.json"))) if os.path.exists(
+                os.path.join(HERE, "manifest.json")) else {}
+            media = m.get(slug) or ("https://lexxautomates.github.io/pinterest-pins/images/demo_pin.png")
+            pins.append({
+                "title": title, "description": description, "link": link,
+                "board": row["board"], "keywords": f"{niche},amazonfinds,musthaves,shopping",
+                "media_url": media, "slug": slug, "niche": niche, "format": fmt,
+                "publish_date": row["date"],
+            })
+        return pins
+
+    def run(self, plan=None, perf=None, board_id=None):
+        board_id = board_id or self.board_id
+        if plan is None:
+            plan = json.load(open(os.path.join(os.path.dirname(__file__), "plan.json")))
+        pins = self.build_campaign(plan, perf)
         results = []
-        for product in niches.SEED_PRODUCTS:
-            fmt = Researcher.pick(product)
-            link = Matcher.link(product)
-            title = fmt["title_tmpl"].format(
-                n=5, price=25, problem="clutter", season="Holiday", seasonlower="holiday",
-                product=product["name"], niche=product["niche"])
-            description = fmt["desc_tmpl"].format(
-                n=5, price=25, problem="clutter", season="Holiday", seasonlower="holiday",
-                product=product["name"], niche=product["niche"])
-            body = pin_spec.build_pin_body(title, description, link)
-            image_path = Designer.design(product, title)
-            payload = {**body, "image_path": image_path, "niche": product["niche"],
-                       "format": fmt["format"], "affiliate_tag": "lexxdigital03-20"}
-            status = Publisher.publish(payload, self.board_id)
-            results.append({"title": title, "link": link, "status": status})
+        for p in pins:
+            body = pin_spec.build_pin_body(p["title"], p["description"], p["link"])
+            payload = {**body, "image_path": image_gen.image_path(p["niche"], p["format"]),
+                       "niche": p["niche"], "format": p["format"],
+                       "affiliate_tag": "lexxdigital03-20"}
+            status = Publisher.publish(payload, board_id)
+            results.append({"title": p["title"], "link": p["link"], "status": status})
         return results
 
 
 if __name__ == "__main__":
-    out = Foreman(board_id=None).run()
+    import sys
+    plan = json.load(open(os.path.join(os.path.dirname(__file__), "plan.json")))
+    perf = json.load(open(sys.argv[1])).get("perf") if len(sys.argv) > 1 and os.path.exists(sys.argv[1]) else None
+    out = Foreman(board_id=None).run(plan, perf)
     for r in out:
         print("TITLE :", r["title"])
         print("LINK  :", r["link"])
