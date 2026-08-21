@@ -1,35 +1,5 @@
 [
   {
-    "title": "Cozy Amazon Home Upgrades You Need",
-    "description": "Elevate your space with these aesthetic Amazon finds. Save & shop  #homedecor #amazonhome #interiordesign",
-    "link": "https://www.amazon.com/REPLACE_ASIN_1?tag=lexxdigital03-20",
-    "image_path": "PENDING_DESIGN",
-    "niche": "home_organization",
-    "format": "aesthetic_flatlay",
-    "affiliate_tag": "lexxdigital03-20",
-    "staged_at": "2026-08-21T08:45:22.058012Z"
-  },
-  {
-    "title": "Tired of clutter? Fix it for $25",
-    "description": "This Amazon find solves clutter fast. Link on the pin  #amazonmusthaves #homehacks #lifehacks",
-    "link": "https://www.amazon.com/REPLACE_ASIN_2?tag=lexxdigital03-20",
-    "image_path": "PENDING_DESIGN",
-    "niche": "kitchen_gadget",
-    "format": "problem_solution",
-    "affiliate_tag": "lexxdigital03-20",
-    "staged_at": "2026-08-21T08:45:22.079020Z"
-  },
-  {
-    "title": "5 Amazon Finds Under $25",
-    "description": "Save this list of 5 budget-friendly Amazon must-haves under $25. Tap to shop  #affordable #amazonfinds #deals",
-    "link": "https://www.amazon.com/REPLACE_ASIN_3?tag=lexxdigital03-20",
-    "image_path": "PENDING_DESIGN",
-    "niche": "desk_setup",
-    "format": "listicle_under_x",
-    "affiliate_tag": "lexxdigital03-20",
-    "staged_at": "2026-08-21T08:45:22.095543Z"
-  },
-  {
     "title": "Tired of clutter? Try This closet organizer",
     "description": "If clutter drives you crazy, the closet organizer fixes it in minutes - and it's under $25. See why reviewers love it via the link. As an Amazon Associate, I earn from qualifying purchases.",
     "link": "https://www.amazon.com/REPLACE_ASIN_1?tag=lexxdigital03-20",
@@ -37,46 +7,46 @@
     "niche": "home_organization",
     "format": "problem_solution",
     "affiliate_tag": "lexxdigital03-20",
-    "staged_at": "2026-08-21T08:47:29.166888Z"
+    "staged_at": "2026-08-21T08:47:55.582084Z"
   },
   {
-    "title": "Tired of clutter? Try This space-saving gadget",
-    "description": "If clutter drives you crazy, the space-saving gadget fixes it in minutes - and it's under $25. See why reviewers love it via the link. As an Amazon Associate, I earn from qualifying purchases.",
+    "title": "Before & After: How We Fixed clutter with space-saving gadget",
+    "description": "Swipe-ready transformation - this space-saving gadget turned things around for under $25. Save it for your next project. As an Amazon Associate, I earn from qualifying purchases.",
     "link": "https://www.amazon.com/REPLACE_ASIN_2?tag=lexxdigital03-20",
     "image_path": "PENDING_DESIGN",
     "niche": "kitchen_gadgets",
-    "format": "problem_solution",
+    "format": "before_after",
     "affiliate_tag": "lexxdigital03-20",
-    "staged_at": "2026-08-21T08:47:29.183414Z"
+    "staged_at": "2026-08-21T08:47:55.597859Z"
   },
   {
-    "title": "Before & After: How We Fixed clutter with cable management tray",
-    "description": "Swipe-ready transformation - this cable management tray turned things around for under $25. Save it for your next project. As an Amazon Associate, I earn from qualifying purchases.",
+    "title": "5 Gift Ideas Under $25",
+    "description": "Stuck on gifts? These 5 tech_desk_accessories picks are crowd-pleasers under $25 and ship fast. Save this list for later. As an Amazon Associate, I earn from qualifying purchases.",
     "link": "https://www.amazon.com/REPLACE_ASIN_3?tag=lexxdigital03-20",
     "image_path": "PENDING_DESIGN",
     "niche": "tech_desk_accessories",
-    "format": "before_after",
+    "format": "gift_guide",
     "affiliate_tag": "lexxdigital03-20",
-    "staged_at": "2026-08-21T08:47:29.202935Z"
+    "staged_at": "2026-08-21T08:47:55.613628Z"
   },
   {
-    "title": "Tired of clutter? Try This robot vacuum",
-    "description": "If clutter drives you crazy, the robot vacuum fixes it in minutes - and it's under $25. See why reviewers love it via the link. As an Amazon Associate, I earn from qualifying purchases.",
+    "title": "Before & After: How We Fixed clutter with robot vacuum",
+    "description": "Swipe-ready transformation - this robot vacuum turned things around for under $25. Save it for your next project. As an Amazon Associate, I earn from qualifying purchases.",
     "link": "https://www.amazon.com/REPLACE_ASIN_4?tag=lexxdigital03-20",
     "image_path": "PENDING_DESIGN",
     "niche": "cleaning_tools",
-    "format": "problem_solution",
+    "format": "before_after",
     "affiliate_tag": "lexxdigital03-20",
-    "staged_at": "2026-08-21T08:47:29.220454Z"
+    "staged_at": "2026-08-21T08:47:55.631167Z"
   },
   {
-    "title": "5 Amazon Finds Under $25",
-    "description": "Budget-friendly must-haves under $25. Tap to shop the full list. As an Amazon Associate, I earn from qualifying purchases.",
+    "title": "5 Gift Ideas Under $25",
+    "description": "Stuck on gifts? These 5 pet_supplies picks are crowd-pleasers under $25 and ship fast. Save this list for later. As an Amazon Associate, I earn from qualifying purchases.",
     "link": "https://www.amazon.com/REPLACE_ASIN_5?tag=lexxdigital03-20",
     "image_path": "PENDING_DESIGN",
     "niche": "pet_supplies",
-    "format": "price_roundup",
+    "format": "gift_guide",
     "affiliate_tag": "lexxdigital03-20",
-    "staged_at": "2026-08-21T08:47:29.243455Z"
+    "staged_at": "2026-08-21T08:47:55.647708Z"
   }
 ]
